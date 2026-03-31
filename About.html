@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about BrightPath Solar's mission to provide reliable, affordable, and efficient solar panel installations to homes and businesses across Gauteng.">
+    <meta name="keywords" content="About BrightPath Solar, Solar Company Sandton, Renewable Energy Mission, Gauteng Solar Installers">
+    <meta name="author" content="BrightPath Solar">
+    <title>BrightPath Solar | About Us</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Strong Branding & Variables (Matching index.html) */
+        :root {
+            --brand-blue: #007BFF;
+            --brand-orange: #FFA500;
+            --brand-green: #28A745;
+            --brand-gray: #343A40;
+            --light-bg: #F4F7F6;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* Base Reset & Typography */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--brand-gray); line-height: 1.7; background-color: var(--white); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.2; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-up { animation: fadeUp 1s ease forwards; }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 600; text-align: center; cursor: pointer; transition: var(--transition); border: none; font-family: 'Montserrat', sans-serif; }
+        .btn-primary { background-color: var(--brand-orange); color: var(--white); box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3); }
+        .btn-primary:hover { background-color: #e69500; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4); }
+
+        /* Navigation Header with Logo Image */
+        header { background-color: var(--white); padding: 0.8rem 5%; box-shadow: 0 2px 20px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; height: auto; }
+        .logo { display: flex; align-items: center; max-width: 250px; z-index: 1001; }
+        .logo img { max-height: 70px; width: auto; display: block; object-fit: contain; }
+        
+        nav ul { display: flex; gap: 2rem; align-items: center; }
+        nav a { font-weight: 500; font-size: 1rem; color: var(--brand-gray); }
+        nav a:hover, nav a.active { color: var(--brand-blue); }
+        
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; border: none; background: transparent; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--brand-gray); border-radius: 2px; transition: var(--transition); }
+
+        /* Page Hero Section */
+        .page-hero { position: relative; background: linear-gradient(135deg, rgba(52, 58, 64, 0.9), rgba(0, 123, 255, 0.8)), url('https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?auto=format&fit=crop&q=80') no-repeat center center/cover; color: var(--white); text-align: center; padding: 120px 5% 80px; }
+        .page-hero h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 1rem; }
+        .page-hero h1 span { color: var(--brand-orange); }
+        .page-hero p { font-size: clamp(1rem, 2vw, 1.2rem); max-width: 600px; margin-inline: auto; font-weight: 400; }
+
+        /* Section Global */
+        .section { padding: 100px 5%; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(2rem, 4vw, 2.5rem); color: var(--brand-gray); }
+        .section-header h2 span { color: var(--brand-blue); }
+        .section-header p { color: #666; max-width: 600px; margin: 10px auto 0; }
+
+        /* Mission Statement Box */
+        .mission-box { background-color: var(--brand-blue); color: var(--white); padding: 4rem 2rem; border-radius: 16px; text-align: center; max-width: 900px; margin: 0 auto 4rem; box-shadow: 0 15px 40px rgba(0, 123, 255, 0.2); }
+        .mission-box h3 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--brand-orange); }
+        .mission-box p { font-size: 1.25rem; line-height: 1.8; font-weight: 500; }
+
+        /* Content Layout Grid */
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .content-text h2 { color: var(--brand-gray); margin-bottom: 1.5rem; font-size: 2.2rem; }
+        .content-text p { margin-bottom: 1.5rem; font-size: 1.05rem; color: #555; }
+        .content-image img { width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 5px solid var(--brand-green); }
+
+        /* Values Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .card { background: var(--white); padding: 2.5rem 2rem; border-radius: 12px; text-align: center; transition: var(--transition); border: 1px solid #eee; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--brand-orange); transform: scaleX(0); transform-origin: center; transition: var(--transition); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .card:hover::before { transform: scaleX(1); }
+        .card .icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--brand-blue); }
+        .card h3 { color: var(--brand-gray); margin-bottom: 1rem; font-size: 1.25rem; }
+        .card p { color: #555; font-size: 0.95rem; }
+
+        /* Footer */
+        footer { background-color: var(--brand-gray); color: var(--white); padding: 80px 5% 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; margin-bottom: 3rem; }
+        .footer-grid h4 { color: var(--white); margin-bottom: 1.5rem; font-size: 1.2rem; }
+        .footer-grid p, .footer-grid a { color: #aaa; font-size: 0.95rem; margin-bottom: 0.8rem; display: block; line-height: 1.5; }
+        .footer-grid a:hover { color: var(--brand-orange); padding-left: 5px; }
+        .copyright { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #888; font-size: 0.85rem; }
+
+        /* Mobile Optimization */
+        @media (max-width: 991px) {
+            .content-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .content-image { order: -1; } /* Puts image above text on mobile */
+            .logo img { max-height: 60px; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            header { padding: 0.8rem 5%; }
+            
+            nav { position: fixed; top: 0; left: 100%; width: 100%; height: 100vh; background-color: var(--white); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: var(--transition); z-index: 1000; }
+            nav.active { left: 0; }
+            nav ul { flex-direction: column; gap: 2rem; text-align: center; }
+            nav a { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+            
+            .header-cta { display: none; }
+            
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            
+            .logo img { max-height: 55px; }
+            .mission-box { padding: 2.5rem 1.5rem; }
+            .mission-box h3 { font-size: 1.5rem; }
+            .mission-box p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="BrightPath Solar Logo" title="BrightPath Solar">
+        </a>
+        
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="residential.html">Residential</a></li>
+                <li><a href="commercial.html">Commercial</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li style="display: block; margin-top: 1rem;" class="mobile-cta-wrapper">
+                    <a href="index.html#booking" class="btn btn-primary" onclick="toggleMenu()">Book Consultation</a>
+                </li>
+            </ul>
+        </nav>
+
+        <a href="index.html#booking" class="btn btn-primary header-cta">Book Consultation</a>
+        
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <section class="page-hero">
+        <div class="animate-up">
+            <h1>About <span>BrightPath Solar</span></h1>
+            <p>Discover our roots in Sandton and our dedication to bringing clean, sustainable energy to all of Gauteng.</p>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--light-bg);">
+        
+        <div class="mission-box animate-up">
+            <h3>Our Mission</h3>
+            <p>"To provide reliable, affordable, and efficient solar panel installations for homes and businesses, dedicated to illuminating a sustainable future for our communities."</p>
+        </div>
+
+        <div class="content-grid animate-up">
+            <div class="content-text">
+                <h2>Empowering South Africa, <span style="color: var(--brand-green);">One Roof at a Time.</span></h2>
+                <p>Headquartered in the heart of Sandton at The Apex Building, BrightPath Solar was founded with a singular vision: to help the greater Gauteng province break free from the disruptions of load shedding and grid instability.</p>
+                <p>We understand that navigating the world of renewable energy can be complex. That’s why we act as your dedicated guides on your journey to clean energy. Whether you are a homeowner looking to keep the lights on and reduce electricity bills, or a commercial enterprise needing a robust microgrid to ensure business continuity, we deliver bespoke, high-efficiency solutions.</p>
+                <p>Our team of expert engineers and certified installers prioritize safety, performance, and aesthetic integration, ensuring your transition to solar is seamless and stress-free.</p>
+            </div>
+            <div class="content-image">
+                <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80" alt="Solar Panel Installation Team">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header animate-up">
+            <h2>Our <span>Core Values</span></h2>
+            <p>The principles that guide every installation, inspection, and customer interaction.</p>
+        </div>
+        
+        <div class="grid animate-up">
+            <div class="card">
+                <div class="icon">🛡️</div>
+                <h3>Reliability</h3>
+                <p>We only use premium, tier-1 solar panels and high-capacity battery systems proven to withstand the demands of the South African climate and power grid.</p>
+            </div>
+            <div class="card">
+                <div class="icon">💰</div>
+                <h3>Affordability</h3>
+                <p>Clean energy shouldn't be a luxury. We strive to provide cost-effective solutions and transparent pricing that deliver a rapid return on your investment.</p>
+            </div>
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>Efficiency</h3>
+                <p>From our initial consultation to the final flip of the switch, our processes are optimized for speed and maximum energy yield for your property.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🌍</div>
+                <h3>Sustainability</h3>
+                <p>We are deeply committed to reducing the carbon footprint of our communities and fostering a greener, healthier future for generations to come.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>BrightPath Solar</h4>
+                <p>To provide reliable, affordable, and efficient solar panel installations, dedicated to illuminating a sustainable future.</p>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <p><strong>Phone:</strong> <a href="tel:+27115550199">+27 11 555 0199</a></p>
+                <p><strong>Toll-Free:</strong> <a href="tel:18005557867">1-800-555-SUNS</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@brightpathsolar-fictional.com">info@brightpathsolar-fictional.com</a></p>
+            </div>
+            <div>
+                <h4>Headquarters</h4>
+                <p>Suite 400, The Apex Building<br>
+                142 Renewable Way, Eco-Park<br>
+                Sandton, Gauteng, 2196<br>
+                South Africa</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html#booking">Book Online</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 BrightPath Solar. All Rights Reserved. | www.brightpathsolar-fictional.com
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>
