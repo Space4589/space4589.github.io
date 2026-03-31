@@ -1,55 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MordenWardrobe — Trending Now</title>
-  <link href="styles.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BrightPath Solar provides reliable, affordable, and efficient solar panel installations for homes and businesses in Gauteng. Start your journey to clean energy today.">
+    <meta name="keywords" content="Solar Panels, Solar Installation Sandton, Clean Energy Gauteng, Commercial Solar, Residential Solar, Load Shedding Battery Storage">
+    <meta name="author" content="BrightPath Solar">
+    <title>BrightPath Solar | Your Journey to Clean Energy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Strong Branding & Variables */
+        :root {
+            --brand-blue: #007BFF;
+            --brand-orange: #FFA500;
+            --brand-green: #28A745;
+            --brand-gray: #343A40;
+            --light-bg: #F4F7F6;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* Base Reset & Typography */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--brand-gray); line-height: 1.7; background-color: var(--white); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.2; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-up { animation: fadeUp 1s ease forwards; }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 600; text-align: center; cursor: pointer; transition: var(--transition); border: none; font-family: 'Montserrat', sans-serif; }
+        .btn-primary { background-color: var(--brand-orange); color: var(--white); box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3); }
+        .btn-primary:hover { background-color: #e69500; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4); }
+        .btn-secondary { background-color: transparent; color: var(--white); border: 2px solid var(--white); }
+        .btn-secondary:hover { background-color: var(--white); color: var(--brand-gray); }
+
+        /* Navigation Header */
+        header { background-color: var(--white); padding: 1rem 5%; box-shadow: 0 2px 20px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--brand-blue); display: flex; align-items: center; gap: 8px; z-index: 1001; }
+        .logo span { color: var(--brand-orange); }
+        
+        nav ul { display: flex; gap: 2rem; align-items: center; }
+        nav a { font-weight: 500; font-size: 1rem; color: var(--brand-gray); }
+        nav a:hover { color: var(--brand-blue); }
+        
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; border: none; background: transparent; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--brand-gray); border-radius: 2px; transition: var(--transition); }
+
+        /* Hero Section */
+        .hero { position: relative; background: linear-gradient(135deg, rgba(0, 123, 255, 0.9), rgba(52, 58, 64, 0.8)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80') no-repeat center center/cover; color: var(--white); text-align: center; padding: 150px 5% 120px; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
+        .hero h1 span { color: var(--brand-orange); }
+        .hero p { font-size: clamp(1rem, 2vw, 1.25rem); margin-bottom: 2.5rem; max-width: 700px; margin-inline: auto; font-weight: 400; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* Section Global */
+        .section { padding: 100px 5%; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(2rem, 4vw, 2.5rem); color: var(--brand-gray); }
+        .section-header h2 span { color: var(--brand-blue); }
+        .section-header p { color: #666; max-width: 600px; margin: 10px auto 0; }
+
+        /* Services Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card { background: var(--white); padding: 2.5rem 2rem; border-radius: 12px; text-align: left; transition: var(--transition); border: 1px solid #eee; position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--brand-green); transform: scaleX(0); transform-origin: left; transition: var(--transition); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .card:hover::before { transform: scaleX(1); }
+        .card h3 { color: var(--brand-gray); margin-bottom: 1rem; font-size: 1.25rem; }
+        .card p { color: #555; font-size: 0.95rem; }
+
+        /* Booking Form */
+        .booking-section { background-color: var(--light-bg); }
+        .form-container { background: var(--white); padding: 3rem; border-radius: 16px; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; color: var(--brand-gray); }
+        .form-group input, .form-group select { width: 100%; padding: 0.8rem 1rem; border: 1px solid #ddd; border-radius: 8px; font-family: 'Open Sans', sans-serif; font-size: 1rem; transition: var(--transition); background-color: #fafafa; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--brand-blue); background-color: var(--white); box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1); }
+        .form-btn { width: 100%; font-size: 1.1rem; padding: 1rem; margin-top: 1rem; }
+
+        /* Footer */
+        footer { background-color: var(--brand-gray); color: var(--white); padding: 80px 5% 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; margin-bottom: 3rem; }
+        .footer-grid h4 { color: var(--white); margin-bottom: 1.5rem; font-size: 1.2rem; }
+        .footer-grid p, .footer-grid a { color: #aaa; font-size: 0.95rem; margin-bottom: 0.8rem; display: block; line-height: 1.5; }
+        .footer-grid a:hover { color: var(--brand-orange); padding-left: 5px; }
+        .copyright { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: #888; font-size: 0.85rem; }
+
+        /* Mobile Optimization (Media Queries) */
+        @media (max-width: 991px) {
+            .hero { padding: 120px 5% 80px; }
+            .section { padding: 80px 5%; }
+            .form-container { padding: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            
+            nav { position: fixed; top: 0; left: 100%; width: 100%; height: 100vh; background-color: var(--white); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: var(--transition); z-index: 1000; }
+            nav.active { left: 0; }
+            nav ul { flex-direction: column; gap: 2rem; text-align: center; }
+            nav a { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+            
+            .header-cta { display: none; } /* Hide book button in header on mobile to save space */
+            
+            /* Hamburger animation classes */
+            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">MordenWardrobe</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Categories</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>🔥 Trending Topic of the Day</h1>
-    <p class="hero-desc">Inside the viral topic taking the internet by storm...</p>
-    <a class="read-more" href="#">Read Full Article</a>
-  </section>
+    <header>
+        <a href="index.html" class="logo">BrightPath <span>Solar</span></a>
+        
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="residential.html">Residential</a></li>
+                <li><a href="commercial.html">Commercial</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li style="display: block; margin-top: 1rem;" class="mobile-cta-wrapper">
+                    <a href="#booking" class="btn btn-primary" onclick="toggleMenu()">Book Consultation</a>
+                </li>
+            </ul>
+        </nav>
 
-  <section class="trending-list">
-    <h2>Top 10 Trending Topics</h2>
-    <ul>
-      <li><a href="#">1. AI-generated clothing lines</a></li>
-      <li><a href="#">2. Meta's latest VR update</a></li>
-      <li><a href="#">3. South African elections 2025</a></li>
-      <li><a href="#">4. TikTok fashion trends</a></li>
-      <li><a href="#">5. UEFA final highlights</a></li>
-      <li><a href="#">6. Billie Eilish tour outfits</a></li>
-      <li><a href="#">7. Elon Musk Twitter update</a></li>
-      <li><a href="#">8. Climate protest fashion</a></li>
-      <li><a href="#">9. Trending minimalist brands</a></li>
-      <li><a href="#">10. Google AI news summary</a></li>
-    </ul>
-  </section>
+        <a href="#booking" class="btn btn-primary header-cta">Book Consultation</a>
+        
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
-  <section class="article-preview">
-    <h2>Featured Article</h2>
-    <h3>AI Fashion is Here: What It Means for Gen Z Style</h3>
-    <p>The fashion world is transforming. With the help of AI, brands are releasing personalized collections based on real-time data and user preferences...</p>
-    <a href="#">Continue Reading →</a>
-  </section>
+    <section class="hero">
+        <div class="animate-up">
+            <h1>Your Journey to <span>Clean Energy</span></h1>
+            <p>Beat load shedding and achieve energy independence with reliable, affordable solar solutions for homes and businesses across Gauteng.</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="btn btn-primary">Get a Free Quote</a>
+                <a href="about.html" class="btn btn-secondary">Discover Our Mission</a>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 MordenWardrobe. All rights reserved.</p>
-  </footer>
+    <section class="section">
+        <div class="section-header animate-up">
+            <h2>Our <span>Expertise</span></h2>
+            <p>Comprehensive solar panel installations and power solutions tailored to your unique energy needs.</p>
+        </div>
+        <div class="grid animate-up">
+            <div class="card">
+                <h3>Residential Solar</h3>
+                <p>Turn your roof into a power plant. We design and install custom home solar systems to lower your bills and provide peace of mind.</p>
+            </div>
+            <div class="card">
+                <h3>Commercial Solar</h3>
+                <p>Protect your bottom line. Large-scale energy solutions and microgrids designed to keep your operations running smoothly without interruption.</p>
+            </div>
+            <div class="card">
+                <h3>Battery Storage</h3>
+                <p>Don't get left in the dark. High-capacity battery integration ensures your lights, Wi-Fi, and essential appliances stay on during load shedding.</p>
+            </div>
+            <div class="card">
+                <h3>Maintenance & Support</h3>
+                <p>Protect your investment. We offer routine panel cleaning, expert system inspections, and 24/7 performance monitoring.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="section booking-section">
+        <div class="section-header animate-up">
+            <h2>Schedule a <span>Consultation</span></h2>
+            <p>Fill out the form below and our energy experts will contact you to design the perfect solar architecture for your property.</p>
+        </div>
+        
+        <div class="form-container animate-up">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="e.g. John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="property">Property Type</label>
+                    <select id="property" name="property">
+                        <option value="" disabled selected>Select property type...</option>
+                        <option value="residential">Residential Home</option>
+                        <option value="commercial">Commercial Business</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Consultation Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <button type="submit" class="btn btn-primary form-btn">Request Your Quote</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>BrightPath Solar</h4>
+                <p>To provide reliable, affordable, and efficient solar panel installations, dedicated to illuminating a sustainable future.</p>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <p><strong>Phone:</strong> <a href="tel:+27115550199">+27 11 555 0199</a></p>
+                <p><strong>Toll-Free:</strong> <a href="tel:18005557867">1-800-555-SUNS</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@brightpathsolar-fictional.com">info@brightpathsolar-fictional.com</a></p>
+            </div>
+            <div>
+                <h4>Headquarters</h4>
+                <p>Suite 400, The Apex Building<br>
+                142 Renewable Way, Eco-Park<br>
+                Sandton, Gauteng, 2196<br>
+                South Africa</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="#booking">Book Online</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 BrightPath Solar. All Rights Reserved. | www.brightpathsolar-fictional.com
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            // Prevent scrolling when menu is open
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+    </script>
 </body>
 </html>
